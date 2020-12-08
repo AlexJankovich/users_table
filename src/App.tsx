@@ -1,8 +1,6 @@
 import React from 'react';
-import {UserForm} from './component/UserForm';
-import {UsersContainer} from './component/UsersContainer';
-import logo from './logo.svg';
 import './App.css';
+import {UsersContainer} from './component/UsersContainer';
 
 function App() {
   return (

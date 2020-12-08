@@ -48,14 +48,11 @@
 
 .tableRows div {
 	padding: 10px 5px;
-	/*display: flex;*/
-	/*flex-direction: column;*/
 	}
 
 form .tableRows div input, select {
 	width: 90%;
 	padding: 5px;
-	/*overflow: hidden;*/
 	}
 
 .rowsWrapper:nth-child(even) div {
@@ -79,12 +76,9 @@ form .tableRows div input, select {
 	color: red;
 	border: 1px solid black;
 	}
-/*@media screen and (max-width: 1023px) {*/
-/*	.tableHead {*/
-/*		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 0.6fr 0.8fr 0.8fr 0.5fr;*/
-/*		}*/
-/*	*/
-/*	.tableRows {*/
-/*		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 0.6fr 0.8fr 0.8fr 0.5fr;*/
-/*		}*/
-/*	}*/
+
+@media screen and (max-width: 1023px){
+	.tableRows .button{
+		flex-direction: column;
+		}
+	}

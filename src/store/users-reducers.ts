@@ -1,11 +1,10 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
-import {v4 as uuid} from 'uuid';
 
 export type initialStateType = {
   users: usersType[]
   searchEmailString: string
   searchPhoneString: string
-  searchByStatus:string
+  searchByStatus: string
 };
 export type usersType = {
   id: string
@@ -43,6 +42,21 @@ const UserSlice = createSlice({
     setUsers(state, action: PayloadAction<{ users: usersType[] }>) {
       return {...state, users: [...action.payload.users]};
     },
+    updateUsers(state, action: PayloadAction<{ user: usersType }>) {
+      return {
+        ...state,
+        users: [
+          ...state.users.map(u => {
+            if (u.id === action.payload.user.id) {
+              u = {...action.payload.user};
+              return u;
+            } else {
+              return u;
+            }
+          })
+        ]
+      };
+    },
     setSearchEmailString(state, action: PayloadAction<{ searchEmailString: string }>) {
       state.searchEmailString = action.payload.searchEmailString;
     },
@@ -63,5 +77,6 @@ export const {
   setUsers,
   setSearchEmailString,
   setSearchPhoneString,
-  setSearchByStatus
+  setSearchByStatus,
+  updateUsers
 } = UserSlice.actions;

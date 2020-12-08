@@ -4,34 +4,44 @@ import {useDispatch} from 'react-redux';
 import {addUser, usersType} from '../store/users-reducers';
 import s from './Users.module.css';
 import {v4 as uuid} from 'uuid';
+import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
+import {faCheckSquare} from '@fortawesome/free-solid-svg-icons';
+import {faWindowClose} from '@fortawesome/free-solid-svg-icons';
+
 
 type UserFormPropsType = {
   users: usersType[]
-  isEditModeHandler: (isEditMode: boolean) => void
+  isInputModeHandler: (isEditMode: boolean) => void
 }
 
-export const UserForm = (props: UserFormPropsType) => {
-  const dispatch = useDispatch();
+export const UserInputForm = (props: UserFormPropsType) => {
 
+  const dispatch = useDispatch();
+//initialize hook-form
   const {register, handleSubmit, errors} = useForm<usersType>();
 
   const onSubmit = (data: usersType) => {
 
     const newId = {id: uuid()};
     const newData: usersType = {...data, ...newId};
+    //data from localstorage
     const dataFromLocalStorage = localStorage.getItem('users');
     const parsedData = dataFromLocalStorage && JSON.parse(dataFromLocalStorage);
+    //to localstorage
     const newLocalStorageData = parsedData
       ? {...parsedData, users: [...parsedData.users, newData]}
       : {users: [{...newData}]};
     localStorage.setItem('users', JSON.stringify(newLocalStorageData));
+    //to store
     dispatch(addUser({user: newData}));
-    props.isEditModeHandler(false);
+    props.isInputModeHandler(false);
   };
 
   return (
     <div>
+
       <h1>Введите информацию о пользователе</h1>
+
       <form onSubmit={handleSubmit(onSubmit)}>
         <div className={s.tableHead}>
           <div>Email</div>
@@ -44,8 +54,8 @@ export const UserForm = (props: UserFormPropsType) => {
           <div>Дата создания</div>
           <div>Дата изменения</div>
           <div className={s.button}>
-            <button onClick={() => props.isEditModeHandler(false)}>
-              X
+            <button onClick={() => props.isInputModeHandler(false)}>
+              <FontAwesomeIcon icon={faWindowClose}/>
             </button>
           </div>
         </div>
@@ -120,7 +130,7 @@ export const UserForm = (props: UserFormPropsType) => {
               type="text"
               placeholder='Фамилия'
               ref={register({
-                required:true
+                required: true
               })}
               name='userSurname'/>
             {errors?.userSurname?.type === 'required' && <p className={s.errorStyle}>введите фамилию</p>}
@@ -142,7 +152,7 @@ export const UserForm = (props: UserFormPropsType) => {
               placeholder='дата создания'
               ref={register({
                 required: true,
-                pattern:/(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}/
+                pattern: /(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}/
               })}
               name='createdData'/>
             {errors?.createdData?.type === 'required' && <p className={s.errorStyle}>введите дату</p>}
@@ -155,7 +165,7 @@ export const UserForm = (props: UserFormPropsType) => {
               placeholder='дата изменения'
               ref={register({
                 required: true,
-                pattern:/(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}/
+                pattern: /(0[1-9]|1[0-9]|2[0-9]|3[01]).(0[1-9]|1[012]).[0-9]{4}/
               })}
               name='lastChangeData'/>
             {errors?.lastChangeData?.type === 'required' && <p className={s.errorStyle}>введите дату</p>}
@@ -163,9 +173,10 @@ export const UserForm = (props: UserFormPropsType) => {
           </div>
 
           <div className={s.button}>
-            <button>+</button>
+            <button>
+              <FontAwesomeIcon icon={faCheckSquare}/>
+            </button>
           </div>
-
         </div>
       </form>
     </div>

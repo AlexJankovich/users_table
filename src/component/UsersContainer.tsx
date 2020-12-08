@@ -7,28 +7,32 @@ import {
   setUsers,
   setSearchEmailString,
   setSearchPhoneString,
-  setSearchByStatus
+  setSearchByStatus, usersType
 } from '../store/users-reducers';
-import {UserForm} from './UserForm';
+import {UserEditForm} from './UserEditForm';
+import {UserInputForm} from './UserInputForm';
 import {Users} from './Users';
 
 export const UsersContainer = () => {
-
+  //data from localstorage
   const dataFromLocalStorage = localStorage.getItem('users');
   const parsedDataFomStorage: initialStateType = dataFromLocalStorage && JSON.parse(dataFromLocalStorage);
-
+  //data from redux
   const dispatch = useDispatch();
   let users = useSelector<RootStateType, initialStateType>(state => {
     return state.users;
   });
-
-  const [isEditMode, setIsEditMode] = useState<boolean>(false);
+  //local states
+  const [isInputMode, setInputMode] = useState<boolean>(false);
+  const [filteredUser, setFilteredUser] = useState<usersType[]>([]);
+  const [isEditMode, setEditMode] = useState<boolean>(false);
 
   useEffect(() => {
     if (!parsedDataFomStorage) return;
     else dispatch(setUsers({users: parsedDataFomStorage.users}));
   }, [dispatch]);
 
+  //callbacks
   const deleteUserHandler = (id: string) => {
     if (!parsedDataFomStorage) return;
     let newData = {
@@ -40,7 +44,12 @@ export const UsersContainer = () => {
   };
 
   const addUserHandler = () => {
-    setIsEditMode(true);
+    setInputMode(true);
+  };
+
+  const editUserHandler = (id: string) => {
+    setEditMode(true);
+    setFilteredUser([...users.users.filter(u => u.id === id)]);
   };
 
   const onChangeSearchEmailStringHandler = (searchString: string) => {
@@ -57,9 +66,12 @@ export const UsersContainer = () => {
 
   return (
     <div>
+      {isEditMode
+        ? <UserEditForm user={filteredUser[0]} isEditModeHandler={setEditMode}/> : null
+      }
       {
-        !isEditMode
-          ? <Users
+        !isInputMode
+          ? !isEditMode && <Users
             users={users.users}
             searchEmailString={users.searchEmailString}
             searchPhoneString={users.searchPhoneString}
@@ -69,10 +81,11 @@ export const UsersContainer = () => {
             onChangeSearchEmailStringHandler={onChangeSearchEmailStringHandler}
             onChangeSearchPhoneStringHandler={onChangeSearchPhoneStringHandler}
             onChangeSearchByStatusHandler={onChangeSearchByStatusHandler}
-          />
-          : <UserForm
+            editModeHandler={editUserHandler}
+        />
+          : <UserInputForm
             users={users.users}
-            isEditModeHandler={setIsEditMode}/>
+            isInputModeHandler={setInputMode}/>
       }
     </div>
   );
