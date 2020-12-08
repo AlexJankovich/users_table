@@ -1,0 +1,90 @@
+
+.sortPanel {
+	display: flex;
+	padding: 20px 0;
+	justify-content: space-evenly;
+	width: 100%;
+	flex-wrap: wrap;
+	}
+
+.sortPanel select {
+	width: 250px;
+	}
+
+.tableHead {
+	display: grid;
+	grid-auto-rows: max-content;
+	word-break:break-all;
+	grid-template-columns:
+					 minmax(100px, 1.5fr)
+	          minmax(80px, 1.0fr)
+	          minmax(100px, 1.2fr)
+					  repeat(3, minmax(70px, 0.8fr))
+						minmax(55px, 0.7fr)
+						repeat(2, minmax(70px, 0.8fr))
+						minmax(30px, 0.5fr);
+	color: white;
+	background: #6c7ae0;
+	}
+
+.tableHead div {
+	flex-grow: 1;
+	padding: 10px 5px;
+	}
+
+.tableRows {
+	display: grid;
+	grid-auto-rows: max-content;
+	word-break:break-all;
+	grid-template-columns:
+	         minmax(100px, 1.5fr)
+	          minmax(80px, 1.0fr)
+	          minmax(100px, 1.2fr)
+					  repeat(3, minmax(70px, 0.8fr))
+						minmax(55px, 0.7fr)
+						repeat(2, minmax(70px, 0.8fr))
+						minmax(30px, 0.5fr);
+	}
+
+.tableRows div {
+	padding: 10px 5px;
+	/*display: flex;*/
+	/*flex-direction: column;*/
+	}
+
+form .tableRows div input, select {
+	width: 90%;
+	padding: 5px;
+	/*overflow: hidden;*/
+	}
+
+.rowsWrapper:nth-child(even) div {
+	background: #f8f6ff;
+	}
+
+.tableRows .button {
+	display: flex;
+	justify-content: center;
+	max-height: 30px;
+	}
+
+.tableHead .button {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	max-height: 30px;
+	}
+
+.errorStyle {
+	color: red;
+	border: 1px solid black;
+	}
+/*@media screen and (max-width: 1023px) {*/
+/*	.tableHead {*/
+/*		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 0.6fr 0.8fr 0.8fr 0.5fr;*/
+/*		}*/
+/*	*/
+/*	.tableRows {*/
+/*		grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr 0.6fr 0.8fr 0.8fr 0.5fr;*/
+/*		}*/
+/*	}*/
