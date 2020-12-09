@@ -1,20 +1,20 @@
 {
   "files": {
-    "main.css": "/AlexJankovich.github.io/users_table/static/css/main.77d6aff2.chunk.css",
-    "main.js": "/AlexJankovich.github.io/users_table/static/js/main.144051c4.chunk.js",
-    "main.js.map": "/AlexJankovich.github.io/users_table/static/js/main.144051c4.chunk.js.map",
-    "runtime-main.js": "/AlexJankovich.github.io/users_table/static/js/runtime-main.d75f688b.js",
-    "runtime-main.js.map": "/AlexJankovich.github.io/users_table/static/js/runtime-main.d75f688b.js.map",
-    "static/js/2.b181769d.chunk.js": "/AlexJankovich.github.io/users_table/static/js/2.b181769d.chunk.js",
-    "static/js/2.b181769d.chunk.js.map": "/AlexJankovich.github.io/users_table/static/js/2.b181769d.chunk.js.map",
-    "static/js/3.c923f5cb.chunk.js": "/AlexJankovich.github.io/users_table/static/js/3.c923f5cb.chunk.js",
-    "static/js/3.c923f5cb.chunk.js.map": "/AlexJankovich.github.io/users_table/static/js/3.c923f5cb.chunk.js.map",
-    "index.html": "/AlexJankovich.github.io/users_table/index.html",
-    "static/css/main.77d6aff2.chunk.css.map": "/AlexJankovich.github.io/users_table/static/css/main.77d6aff2.chunk.css.map",
-    "static/js/2.b181769d.chunk.js.LICENSE.txt": "/AlexJankovich.github.io/users_table/static/js/2.b181769d.chunk.js.LICENSE.txt"
+    "main.css": "/users_table/static/css/main.77d6aff2.chunk.css",
+    "main.js": "/users_table/static/js/main.144051c4.chunk.js",
+    "main.js.map": "/users_table/static/js/main.144051c4.chunk.js.map",
+    "runtime-main.js": "/users_table/static/js/runtime-main.274ee44e.js",
+    "runtime-main.js.map": "/users_table/static/js/runtime-main.274ee44e.js.map",
+    "static/js/2.b181769d.chunk.js": "/users_table/static/js/2.b181769d.chunk.js",
+    "static/js/2.b181769d.chunk.js.map": "/users_table/static/js/2.b181769d.chunk.js.map",
+    "static/js/3.c923f5cb.chunk.js": "/users_table/static/js/3.c923f5cb.chunk.js",
+    "static/js/3.c923f5cb.chunk.js.map": "/users_table/static/js/3.c923f5cb.chunk.js.map",
+    "index.html": "/users_table/index.html",
+    "static/css/main.77d6aff2.chunk.css.map": "/users_table/static/css/main.77d6aff2.chunk.css.map",
+    "static/js/2.b181769d.chunk.js.LICENSE.txt": "/users_table/static/js/2.b181769d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.d75f688b.js",
+    "static/js/runtime-main.274ee44e.js",
     "static/js/2.b181769d.chunk.js",
     "static/css/main.77d6aff2.chunk.css",
     "static/js/main.144051c4.chunk.js"
